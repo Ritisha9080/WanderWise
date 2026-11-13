@@ -1,31 +1,78 @@
 
 <!doctype html>
 <html lang="en">
+
+<!--
+  WanderWise Travel Planner
+
+  HTML (HyperText Markup Language) creates the structure
+  and content of the website.
+
+  CSS (Cascading Style Sheets) controls the appearance.
+
+  JavaScript makes the website interactive, allowing users
+  to create itineraries, calculate budgets, and save places.
+
+  The website uses separate CSS and JavaScript files.
+-->
+
 <head>
+  <!-- The head contains information about the website
+       that is not displayed as regular page content. -->
+
+  <!-- UTF-8 supports letters, symbols, and special characters. -->
   <meta charset="utf-8">
+
+  <!-- Makes the website adjust to different screen sizes. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Describes the website to browsers and search engines. -->
   <meta name="description" content="Plan thoughtful trips with WanderWise. Discover destinations, build itineraries, and keep your travel plans together.">
+
+  <!-- Controls how much referrer information is shared. -->
   <meta name="referrer" content="no-referrer">
+
+  <!--
+    Content Security Policy (CSP) is a browser security feature.
+    It restricts where scripts, styles, images, and other
+    resources can be loaded from.
+  -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 
+  <!-- This title appears in the browser tab. -->
   <title>WanderWise — Dream it. Plan it. Explore it.</title>
 
+  <!-- These connections help the browser load Google Fonts. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Loads the fonts used throughout the website. -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet">
 
   <!-- External CSS file -->
+  <!-- This file contains the rules for colors, fonts, and layout. -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+  <!--
+    HEADER SECTION
+    The header contains the website logo and navigation links.
+    Navigation links help visitors move between page sections.
+  -->
   <header class="site-header">
+
+    <!-- Clicking the website name returns to the home section. -->
     <a class="brand" href="#home" aria-label="WanderWise home">
       <span class="brand-mark">w</span> wanderwise
     </a>
 
+    <!-- This button opens the navigation menu on smaller screens.
+         JavaScript controls whether the menu is open or closed. -->
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">☰</button>
 
+    <!-- The nav element groups the main navigation links. -->
     <nav id="main-nav" aria-label="Main navigation">
       <a href="#destinations">Destinations</a>
       <a href="#planner">Trip planner</a>
@@ -33,26 +80,56 @@
       <a href="#checklist">Checklist</a>
     </nav>
 
+    <!-- This link takes visitors directly to the trip planner. -->
     <a class="nav-cta" href="#planner">Plan a trip <span>↗</span></a>
   </header>
 
+  <!--
+    MAIN CONTENT
+    The main element contains the primary content of the website.
+    Sections organize the page into different features.
+  -->
   <main>
 
+    <!--
+      HERO SECTION
+      This is the welcome area at the top of the website.
+      It contains the main heading, introduction, and a link
+      that encourages visitors to start planning.
+    -->
     <section class="hero" id="home">
+
+      <!-- Adds a visual overlay to the background image. -->
       <div class="hero-shade"></div>
+
+      <!-- Contains the main welcome message. -->
       <div class="hero-copy">
         <p class="eyebrow light">YOUR NEXT CHAPTER STARTS HERE</p>
         <h1>Dream it.<br><em>Plan it.</em> Explore it.</h1>
         <p>Thoughtful travel planning for the places that stay with you.</p>
         <a class="button button-light" href="#planner">Start planning <span>→</span></a>
       </div>
+
+      <!-- Displays a small decorative message. -->
       <div class="hero-note">
         <span>01 / 05</span>
         <span>Find your somewhere</span>
       </div>
     </section>
 
+    <!--
+      DESTINATIONS SECTION
+      This section displays travel destinations.
+
+      The destination-grid div starts empty.
+      JavaScript creates the destination cards and inserts
+      them into this element when the page loads.
+
+      Each destination has a heart button that lets visitors
+      save or remove it from their wishlist.
+    -->
     <section class="section destinations" id="destinations">
+
       <div class="section-heading">
         <div>
           <p class="eyebrow">A WORLD OF POSSIBILITIES</p>
@@ -60,10 +137,21 @@
         </div>
         <p>Five beautiful starting points.<br>Your story is yours to write.</p>
       </div>
+
+      <!-- JavaScript fills this container with destination cards. -->
       <div class="destination-grid" id="destination-grid"></div>
     </section>
 
+    <!--
+      TRIP PLANNER SECTION
+      Visitors choose a destination, trip length, travel style,
+      and interests to generate a suggested itinerary.
+
+      A form collects the visitor's selections.
+      JavaScript processes the form when it is submitted.
+    -->
     <section class="planner-section" id="planner">
+
       <div class="section-heading">
         <div>
           <p class="eyebrow">YOUR JOURNEY, YOUR WAY</p>
@@ -73,13 +161,21 @@
       </div>
 
       <div class="planner-layout">
+
+        <!--
+          The form element groups inputs that belong together.
+          JavaScript listens for the form's submit event.
+        -->
         <form class="panel planner-form" id="planner-form">
 
+          <!-- JavaScript adds destination options to this menu. -->
           <label>Destination
             <select id="plan-destination" required></select>
           </label>
 
           <div class="form-row">
+
+            <!-- Lets visitors choose how many days to plan. -->
             <label>Trip length
               <select id="duration">
                 <option value="3">3 days</option>
@@ -88,6 +184,7 @@
               </select>
             </label>
 
+            <!-- Lets visitors select their preferred travel style. -->
             <label>Travel style
               <select id="style">
                 <option value="balanced">A little of everything</option>
@@ -98,8 +195,13 @@
             </label>
           </div>
 
+          <!--
+            A fieldset groups related form controls.
+            Checkboxes allow visitors to select multiple interests.
+          -->
           <fieldset>
             <legend>What are you interested in?</legend>
+
             <div class="checks">
               <label><input type="checkbox" name="interest" value="food" checked> Food</label>
               <label><input type="checkbox" name="interest" value="culture" checked> Culture</label>
@@ -108,6 +210,7 @@
             </div>
           </fieldset>
 
+          <!-- Submits the form so JavaScript can build an itinerary. -->
           <button class="button button-blue" type="submit">
             Build my itinerary <span>→</span>
           </button>
@@ -115,6 +218,12 @@
           <p class="fine-print">A curated starting point, built from local highlights. Not live AI or real-time recommendations.</p>
         </form>
 
+        <!--
+          JavaScript replaces the initial message below
+          with a generated itinerary after form submission.
+
+          aria-live helps screen readers announce content updates.
+        -->
         <div class="panel itinerary" id="itinerary" aria-live="polite">
           <div class="empty-state">
             <span class="sun-icon">✳</span>
@@ -125,7 +234,15 @@
       </div>
     </section>
 
+    <!--
+      BUDGET SECTION
+      This section helps visitors estimate travel expenses.
+
+      JavaScript reads the numbers entered into the inputs,
+      calculates total spending, and updates the budget summary.
+    -->
     <section class="section budget-section" id="budget">
+
       <div class="section-heading">
         <div>
           <p class="eyebrow">GOOD PLANS, CLEAR NUMBERS</p>
@@ -135,7 +252,11 @@
       </div>
 
       <div class="budget-layout">
+
+        <!-- Contains the budget inputs. -->
         <form class="panel budget-form" id="budget-form">
+
+          <!-- The number input allows visitors to enter a budget. -->
           <label>Total trip budget
             <div class="money-input">
               <span>$</span>
@@ -143,7 +264,9 @@
             </div>
           </label>
 
+          <!-- Each input represents a different expense category. -->
           <div class="budget-fields">
+
             <label>Accommodation
               <input data-cost="stay" type="number" min="0" max="1000000" value="900" inputmode="decimal">
             </label>
@@ -162,28 +285,52 @@
           </div>
         </form>
 
+        <!--
+          BUDGET SUMMARY
+          JavaScript updates these values when an input changes.
+          The progress bar visually represents spending.
+        -->
         <div class="panel budget-summary">
+
           <p class="eyebrow">YOUR SNAPSHOT</p>
+
+          <!-- Displays the estimated total spending. -->
           <div class="total-line">
             <span>Estimated spend</span>
             <strong id="spent">$2,150</strong>
           </div>
 
+          <!-- The span inside this element acts as a progress bar. -->
           <div class="progress-track">
             <span id="progress"></span>
           </div>
 
+          <!-- Displays remaining money or the amount over budget. -->
           <div class="total-line remaining">
             <span id="remaining-label">Still to spend</span>
             <strong id="remaining">$350</strong>
           </div>
 
+          <!-- Displays feedback about the current budget. -->
           <p class="budget-message" id="budget-message"></p>
         </div>
       </div>
     </section>
 
+    <!--
+      WISHLIST SECTION
+      Visitors can save destinations by clicking heart buttons.
+
+      JavaScript stores the saved destination names in localStorage.
+
+      localStorage is browser storage that can preserve data
+      even after the page is refreshed or the browser is closed.
+
+      The wishlist is stored on the visitor's device,
+      not in a database on a website server.
+    -->
     <section class="wishlist-section">
+
       <div class="wishlist-copy">
         <p class="eyebrow light">KEEP THE DREAM ALIVE</p>
         <h2>Save a little<br>inspiration.</h2>
@@ -191,18 +338,33 @@
       </div>
 
       <div class="wishlist-panel">
+
         <div class="wishlist-heading">
           <h3>Your wishlist</h3>
+
+          <!-- JavaScript updates the number of saved places. -->
           <span id="wishlist-count">0 places</span>
         </div>
 
+        <!-- JavaScript inserts saved destinations into this div. -->
         <div id="wishlist-items" class="wishlist-items">
           <p class="wishlist-empty">Your saved places will appear here.</p>
         </div>
       </div>
     </section>
 
+    <!--
+      TRAVEL CHECKLIST SECTION
+      Displays a list of tasks visitors can check off.
+
+      JavaScript creates the checklist items and updates
+      the number of completed tasks.
+
+      Completed checklist items are saved in localStorage,
+      allowing them to remain checked after refreshing.
+    -->
     <section class="section checklist-section" id="checklist">
+
       <div class="section-heading">
         <div>
           <p class="eyebrow">THE LITTLE THINGS, SORTED</p>
@@ -212,27 +374,54 @@
       </div>
 
       <div class="checklist-layout">
+
         <div class="checklist-progress">
           <span class="sun-icon">✳</span>
+
+          <!-- Displays the number of completed checklist items. -->
           <p><strong id="check-progress">0 of 8</strong><br>things checked off</p>
+
+          <!-- JavaScript resets the checklist when clicked. -->
           <button id="reset-checklist" class="text-button">Reset list ↺</button>
         </div>
 
+        <!--
+          An unordered list displays checklist items.
+          JavaScript adds list items and checkboxes here.
+        -->
         <ul id="checklist-list" class="checklist-list"></ul>
       </div>
     </section>
 
   </main>
 
+  <!--
+    FOOTER SECTION
+    The footer appears at the bottom of the page.
+    It contains the website branding and a link to the top.
+  -->
   <footer>
+
     <a class="brand" href="#home">
       <span class="brand-mark">w</span> wanderwise
     </a>
+
     <p>Made for the places that stay with you.</p>
+
     <a href="#home" class="back-top">Back to top ↑</a>
   </footer>
 
   <!-- External JavaScript file -->
+  <!--
+    This loads script.js after the HTML elements.
+
+    JavaScript uses these elements to create destination cards,
+    generate itineraries, calculate budgets, and save data.
+
+    Loading the script near the end allows the browser
+    to create the HTML elements before JavaScript uses them.
+  -->
   <script src="script.js"></script>
+
 </body>
 </html>
